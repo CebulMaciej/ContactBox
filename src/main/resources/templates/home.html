@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista kontaktów</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<h2>Kontakty</h2>
+<form method="POST" action="/home/add" role="form">
+    <label for="firstName">Imię</label>
+    <input type="text" name="firstName" id="firstName"></input><br/>
+    <label for="lastName">Nazwisko</label>
+    <input type="text" name="lastName" id="lastName"></input><br/>
+    <label for="phoneNumber">Numer</label>
+    <input type="text" name="phoneNumber" id="phoneNumber"></input><br/>
+    <label for="emailAddress">email</label>
+    <input type="text" name="emailAddress" id="emailAddress"></input><br/>
+    <input type="submit"></input>
+</form>
+<ul th:each="contact : ${contacts}">
+    <li>
+        <span th:text="${contact.firstName}">Imię</span>
+        <span th:text="${contact.lastName}">Nazwisko</span>
+        <span th:text="${contact.phoneNumber}">Numer</span>
+        <span th:text="${contact.emailAddress}">Email</span>
+    </li>
+</ul>
+</body>
+</html>
