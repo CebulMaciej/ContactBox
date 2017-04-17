@@ -5,3 +5,4 @@ CREATE TABLE contacts(
   phoneNumber VARCHAR(13),
   emailAddress VARCHAR(30)
 );
+INSERT INTO contacts (id, firstName, lastName, phoneNumber, emailAddress) VALUES (12,'Maciej','Cebula','601226288','maciejcebula96@gmail.com');

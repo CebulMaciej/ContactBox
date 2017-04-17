@@ -1,4 +1,4 @@
-package contacts;
+package contactz;
 
 /**
  * Created by Maciej Cebula on 15.04.2017.
@@ -9,7 +9,7 @@ public class Contact {
     private String lastName;
     private String phoneNumber;
     private String emailAddress;
-    private int ilosc=0;
+    private static int ilosc=0;
     public int getId() {
         return id;
     }

@@ -17,6 +17,13 @@
     <input type="text" name="emailAddress" id="emailAddress"></input><br/>
     <input type="submit"></input>
 </form>
-
+<ul th:each="contact : ${contacts}">
+    <li>
+        <span th:text="${contact.firstName}">Imię</span>
+        <span th:text="${contact.lastName}">Nazwisko</span>
+        <span th:text="${contact.phoneNumber}">Numer</span>
+        <span th:text="${contact.emailAddress}">Email</span>
+    </li>
+</ul>
 </body>
 </html>
