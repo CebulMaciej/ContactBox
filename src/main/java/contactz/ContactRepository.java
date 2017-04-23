@@ -5,8 +5,10 @@ import org.apache.tomcat.jdbc.pool.PoolProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,12 +21,16 @@ public class ContactRepository {
     private JdbcTemplate jdbc;
     //private List<Contact> contactz;
 
-    @Autowired
-    public ContactRepository(JdbcTemplate jdbc){
-        this.jdbc=jdbc;
+    public ContactRepository() {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
+        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/mydb");
+        driverManagerDataSource.setUsername("postgres");
+        driverManagerDataSource.setPassword("postgres");
+        jdbc = new JdbcTemplate(driverManagerDataSource);
     }
     public List<Contact> findAll(){
-        return jdbc.query("select id, firstName, lastName, phoneNumber, emailAddress from contacts order by lastName",
+        return jdbc.query("select id, firstName, lastName, phoneNumber, emailAddress from contact order by lastName",
                 new RowMapper<Contact>(){
                     public Contact mapRow(ResultSet rs, int rowNum)
                         throws SQLException {
@@ -40,7 +46,6 @@ public class ContactRepository {
     }
 
     public void save(Contact contact){
-        jdbc.update("insert into contacts "+"(id,firstName, lastName, phoneNumber, emailAddress)"+
-        "values (?,?,?,?,?)",contact.getId(),contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmailAddress());
+        jdbc.update("insert into contact(id,firstName, lastName, phoneNumber, emailAddress) values (?,?,?,?,?)",Contact.liczba++,contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmailAddress());
     }
 }

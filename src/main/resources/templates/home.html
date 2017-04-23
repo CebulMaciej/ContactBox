@@ -1,30 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Lista kontaktów</title>
     <link rel="stylesheet" th:href="@{/style.css}"/>
     <link  rel="stylesheet" href="../static/bootstrap.css" th:href="@{/bootstrap.css}" />
 </head>
 <body>
-<h2>Kontakty</h2>
+<div class="container" style="outline: 2px solid saddlebrown;margin-top: 30px">
+
+    <div class="col-md-5">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h5>Dodaj kontakt</h5>
+            </div>
+            <div class="panel-body">
 <form method="POST" action="/home/add" role="form">
+    <div class="formgroup">
     <label for="firstName">Imię</label>
     <input type="text" name="firstName" id="firstName"></input><br/>
+    </div>
+    <div class="formgroup">
     <label for="lastName">Nazwisko</label>
     <input type="text" name="lastName" id="lastName"></input><br/>
+    </div>
+    <div class="formgroup">
     <label for="phoneNumber">Numer</label>
     <input type="text" name="phoneNumber" id="phoneNumber"></input><br/>
+    </div>
+    <div class="formgroup">
     <label for="emailAddress">email</label>
     <input type="text" name="emailAddress" id="emailAddress"></input><br/>
+    </div>
+    <div class="formgroup">
     <input type="submit"></input>
+    </div>
 </form>
-<ul th:each="contact : ${contacts}">
-    <li>
-        <span th:text="${contact.firstName}">Imię</span>
-        <span th:text="${contact.lastName}">Nazwisko</span>
-        <span th:text="${contact.phoneNumber}">Numer</span>
-        <span th:text="${contact.emailAddress}">Email</span>
-    </li>
-</ul>
+            </div>
+    </div>
+    </div>
+    <div class="panel panel-success">
+    <div class="col-md-7" style="margin-top: 0px">
+        <h2>Kontakty</h2>
+        <table class="table-bordered">
+            <tr>
+                <td><b><span style="margin: 10px" class="center-block">Imię</span></b></td>
+                <td><b><span style="margin: 10px" class="center-block">Nazwisko</span></b></td>
+                <td><b><span style="margin: 10px" class="center-block">Numer</span></b></td>
+                <td><b><span style="margin: 10px" class="center-block">Email</span></b></td>
+            </tr>
+            <tr class="center-block;" th:each="contact : ${contacts}">
+                <td><span style="margin: 10px" th:text="${contact.firstName}">Imię</span></td>
+                <td><span style="margin: 10px" th:text="${contact.lastName}">Nazwisko</span></td>
+                <td><span style="margin: 10px" th:text="${contact.phoneNumber}">Numer</span></td>
+                <td><span style="margin: 10px" th:text="${contact.emailAddress}">Email</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
 </body>
 </html>

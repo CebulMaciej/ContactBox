@@ -1,23 +1,26 @@
 package contactz;
 
+
+import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 /**
  * Created by Maciej Cebula on 15.04.2017.
  */
+@Component
 public class Contact {
     private int id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String emailAddress;
-    private static int ilosc=0;
+    public static int liczba=0;
     public int getId() {
         return id;
     }
     public Contact(){
-        this.id=ilosc++;
     }
     public Contact(String firstName,String lastName,String phoneNumber,String emailAddress){
-        this.id=ilosc++;
         this.firstName=firstName;
         this.lastName=lastName;
         this.phoneNumber=phoneNumber;
