@@ -30,7 +30,7 @@ public class ContactRepository {
         jdbc = new JdbcTemplate(driverManagerDataSource);
     }
     public List<Contact> findAll(){
-        return jdbc.query("select id, firstName, lastName, phoneNumber, emailAddress from contact order by lastName",
+        return jdbc.query("select id_, firstName, lastName, phoneNumber, emailAddress from contacts order by lastName",
                 new RowMapper<Contact>(){
                     public Contact mapRow(ResultSet rs, int rowNum)
                         throws SQLException {
@@ -46,6 +46,6 @@ public class ContactRepository {
     }
 
     public void save(Contact contact){
-        jdbc.update("insert into contact(id,firstName, lastName, phoneNumber, emailAddress) values (?,?,?,?,?)",Contact.liczba++,contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmailAddress());
+        jdbc.update("insert into contacts(firstName, lastName, phoneNumber, emailAddress) values (?,?,?,?)",contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmailAddress());
     }
 }

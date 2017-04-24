@@ -15,33 +15,37 @@
                 <h5>Dodaj kontakt</h5>
             </div>
             <div class="panel-body">
-<form method="POST" action="/home/add" role="form">
-    <div class="formgroup">
-    <label for="firstName">Imię</label>
-    <input type="text" name="firstName" id="firstName"></input><br/>
-    </div>
-    <div class="formgroup">
-    <label for="lastName">Nazwisko</label>
-    <input type="text" name="lastName" id="lastName"></input><br/>
-    </div>
-    <div class="formgroup">
-    <label for="phoneNumber">Numer</label>
-    <input type="text" name="phoneNumber" id="phoneNumber"></input><br/>
-    </div>
-    <div class="formgroup">
-    <label for="emailAddress">email</label>
-    <input type="text" name="emailAddress" id="emailAddress"></input><br/>
-    </div>
-    <div class="formgroup">
-    <input type="submit"></input>
-    </div>
-</form>
+                <form method="POST" action="/home/add" role="form">
+                    <div class="formgroup">
+                        <label for="firstName">Imię</label>
+                        <input type="text" name="firstName" id="firstName"></input><br/>
+                    </div>
+                    <div class="formgroup">
+                        <label for="lastName">Nazwisko</label>
+                        <input type="text" name="lastName" id="lastName"></input><br/>
+                    </div>
+                    <div class="formgroup">
+                        <label for="phoneNumber">Numer</label>
+                        <input type="text" name="phoneNumber" id="phoneNumber"></input><br/>
+                    </div>
+                    <div class="formgroup">
+                        <label for="emailAddress">email</label>
+                        <input type="text" name="emailAddress" id="emailAddress"></input><br/>
+                    </div>
+                    <div class="formgroup">
+                        <input type="submit"></input>
+                    </div>
+                </form>
             </div>
+        </div>
     </div>
-    </div>
-    <div class="panel panel-success">
     <div class="col-md-7" style="margin-top: 0px">
-        <h2>Kontakty</h2>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+        <h5>Kontakty</h5>
+        </div>
+        <div class="panel-body">
+            <div class="center-block">
         <table class="table-bordered">
             <tr>
                 <td><b><span style="margin: 10px" class="center-block">Imię</span></b></td>
@@ -56,6 +60,8 @@
                 <td><span style="margin: 10px" th:text="${contact.emailAddress}">Email</span></td>
             </tr>
         </table>
+        </div>
+        </div>
     </div>
 </div>
 </div>
